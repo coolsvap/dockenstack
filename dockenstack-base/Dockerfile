@@ -1,12 +1,12 @@
 # Swapnil Kulkarni 2015
 # Forked from code by original author: Eric Windisch
 
-FROM ubuntu:raring
+FROM ubuntu
 MAINTAINER Swapnil Kulkarni <me@coolsvap.net>
 
 EXPOSE 80 5000 8773 8774 8776 9292
 
-RUN apt-get update
+RUN apt-get update -y
 RUN apt-get install -qqy software-properties-common
 
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
