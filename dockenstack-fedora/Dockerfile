@@ -1,48 +1,30 @@
-# Eric Windisch '2014
-# Forked from code by original author: Paul Czarkowski
+# Swapnil Kulkarni 2015
+# Forked from code by original author: Eric Windisch
 
 FROM fedora
-MAINTAINER Eric Windisch "ewindisch@docker.com"
+MAINTAINER Swapnil Kulkarni <me@coolsvap.net>
 
 EXPOSE 80 5000 8773 8774 8776 9292
 
 # Install Docker
-RUN yum -y install docker-io
-#RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9; \
-#    echo 'deb http://get.docker.io/ubuntu docker main' > /etc/apt/sources.list.d/docker.list; \
-#    apt-get update; \
-#    apt-get install -qqy lxc-docker
+RUN yum -y install docker
 
 # Install utilities
 RUN yum -y install git socat curl sudo vim wget
-#RUN apt-get -qqy install git socat curl sudo apt-transport-https vim wget
 
 # Extra requirements for pip-requirements
 RUN yum -y install libffi-devel
-#RUN apt-get install -qqy libffi-dev
 
 # Configure and install MySQL
 RUN yum -y install mysql-server; \
     mysql_install_db --datadir=/var/lib/mysql/; \
     chown -R mysql.mysql /var/lib/mysql;
 
-#RUN echo 'mysql-server mysql-server/root_password password devstack' | debconf-set-selections; \
-#    echo 'mysql-server mysql-server/root_password_again password devstack' | debconf-set-selections; \
-#    apt-get -qqy install mysql-server
-
 # Install RabbitMQ
 RUN yum -y install rabbitmq-server
-#RUN apt-get -qqy install rabbitmq-server
-
-# Install/configure dbus for libvirt (only needed if using libvirt drivers, not docker)
-# creates symlink to /usr/bin due to bug in saucy's init script for dbus.
-#RUN apt-get install -q -y dbus; \
-#    ln -s /bin/dbus-daemon /usr/bin/dbus-daemon
 
 RUN yum -y install sqlite-devel
-
 RUN yum -y install openldap-devel
-
 RUN yum -y install gcc-c++
 
 # Copy in docker images
@@ -74,7 +56,6 @@ RUN /devstack/tools/install_prereqs.sh || :
 
 # Pre-download all "NOPRIME" packages
 RUN /bin/bash /opt/dockenstack/bin/rpm-cache-devstack
-#RUN /bin/bash /opt/dockenstack/bin/apt-cache-devstack
 
 RUN yum -y install python-pip
 
