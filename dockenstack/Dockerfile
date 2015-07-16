@@ -1,8 +1,8 @@
-# Eric Windisch '2014
-# Forked from code by original author: Paul Czarkowski
+# Swapnil Kulkarni 2015
+# Forked from code by original author: Eric Windisch
 
-FROM ewindisch/dockenstack-base
-MAINTAINER Eric Windisch "ewindisch@docker.com"
+FROM coolsvap/dockenstack-base
+MAINTAINER Swapnil Kulkarni <me@coolsvap.net>
 
 #
 # The below images will need to be regenerated periodically

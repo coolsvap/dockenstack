@@ -1,8 +1,8 @@
-# Eric Windisch '2014
-# Forked from code by original author: Paul Czarkowski
+# Swapnil Kulkarni 2015
+# Forked from code by original author: Eric Windisch
 
 FROM ubuntu:raring
-MAINTAINER Eric Windisch "ewindisch@docker.com"
+MAINTAINER Swapnil Kulkarni <me@coolsvap.net>
 
 EXPOSE 80 5000 8773 8774 8776 9292
 
