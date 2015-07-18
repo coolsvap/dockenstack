@@ -7,10 +7,11 @@ MAINTAINER Swapnil Kulkarni <me@coolsvap.net>
 EXPOSE 80 5000 8773 8774 8776 9292
 
 RUN apt-get update -y
-RUN apt-get install -qqy software-properties-common
+RUN apt-get install -qqy software-properties-common wget
+RUN wget -qO- https://get.docker.com/ | sh
 
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
-RUN apt-add-repository 'deb http://get.docker.io/ubuntu docker main'
+#RUN apt-add-repository 'deb http://get.docker.io/ubuntu docker main'
 RUN apt-get update
 
 RUN apt-get -qqy install git socat curl sudo apt-transport-https vim lxc-docker
